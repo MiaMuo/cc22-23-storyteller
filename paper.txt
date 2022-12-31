@@ -1,0 +1,12 @@
+https://zhuanlan.zhihu.com/p/59980663 
+Image Caption
+- Traditional image caption: Encoder-Decoder Architecture -> 2014-2015
+    Mapping problems with inconsistent lengths
+    Attention Architecture
+- Attempts at diversifying Image Caption ->
+    VAE（Variational Auto-Encoder，变分自编码器)
+    GAN（Generative Adversarial Networks，生成性对抗网络）
+
+https://zhuanlan.zhihu.com/p/481122858
+
+

@@ -1,0 +1,4 @@
+Allow the user to upload multiple files in an ordered sequence. 
+Then run the captioning model for each image. 
+Then run GPT-3 once to create a story out of the descriptions.
+Could also allow the user to select certain options, such as character names, theme, or mood.
