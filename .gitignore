@@ -1,5 +1,3 @@
-*.txt
-*.pdf
 *.DS_Store
 outputs
 *.gif
@@ -7,3 +5,4 @@ outputs
 *.jpeg
 *.jpg
 testDaten
+docs
