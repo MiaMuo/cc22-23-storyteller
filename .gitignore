@@ -2,8 +2,8 @@
 *.pdf
 *.DS_Store
 outputs
-inputs
 *.gif
 *.png
 *.jpeg
 *.jpg
+testDaten
