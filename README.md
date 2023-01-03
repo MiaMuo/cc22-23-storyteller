@@ -1,16 +1,7 @@
 # cc22-23-storyteller
 
+1. User Prompting a sequence of images ins Storyteller Model;
 
-original idea:
-An app which takes a sequence of images as input, generates a description of the images, and uses this to generate a short story summarizing the image sequence.
+2. Generating textual descriptions for a sequence of images, which combine breakthroughs from computer vision and natural language processing.
 
-1. About the challenge of generating textual descriptions for images and the need to combine breakthroughs from computer vision and natural language processing.
-
-2. About the elements that comprise a neural feature captioning model, namely the feature extractor and language model.
-
-3. How the elements of the model can be arranged into an Encoder-Decoder, possibly with the use of an attention mechanism.
-
-1. Describing an Image with Text
-2. Neural Captioning Model
-3. Encoder-Decoder Architecture
-
+3. Comprise a neural feature captioning model, which combines the feature extractor and language model and can be arranged into an Encoder-Decoder with the use of an attention mechanism
