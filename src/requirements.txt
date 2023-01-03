@@ -1,2 +1,6 @@
 tk
-Pillow
+pillow
+torch==1.10.0
+git+https://github.com/salesforce/LAVIS.git@v0.1.1
+!cd LAVIS
+!pip3 install LAVIS/
