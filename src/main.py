@@ -11,6 +11,8 @@ import os
 
 # Create the main window
 
+# Covert the input images to GIF format
+
 
 def convert_to_gif(input_path: str, output_path: str):
     filename, _ = os.path.splitext(input_path)
@@ -19,6 +21,8 @@ def convert_to_gif(input_path: str, output_path: str):
         # Convert the image to GIF format
         im = im.convert("RGB")
         im.save(output_path+"/"+name+".gif", "gif")
+
+# User prompt n images and store them into the created inputs folder
 
 
 def user_prompt_n_imgs(n):
@@ -31,6 +35,7 @@ def user_prompt_n_imgs(n):
     return inputs
 
 
+# Testing convert_to_gif
 image_paths = user_prompt_n_imgs(2)
 for img in image_paths:
     convert_to_gif(img, output_path="outputs")
