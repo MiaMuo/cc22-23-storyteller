@@ -1,4 +1,4 @@
-Image Caption Models:
+**Image Caption Models:**
 https://paperswithcode.com/task/image-captioning
 
 
@@ -37,3 +37,14 @@ https://github.com/ZephyrZhuQi/ssbaseline
 
 
 https://paperswithcode.com/task/image-captioning/codeless
+
+
+**Text Generator/ Text-to-Text Transformer Models:**
+
+GPT2 Model
+https://huggingface.co/tasks/text-generation
+
+GPT3 Model
+
+
+
