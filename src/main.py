@@ -4,6 +4,7 @@ Sequence of Images Caption
 Input: Filenames of images to use for the sequence
 Output: The short story
 '''
+import gpt3
 import inferenceLavis
 from lavis.models import load_model_and_preprocess
 from tqdm import tqdm
@@ -43,21 +44,29 @@ def user_prompt_n_imgs(n):
     return inputs
 
 
+def prompt_user_for_mood():
+    mood = input("What mood would you like the story to be? ")
+    return mood
+
+
 def main(num_images: int):
-
-    # Testing convert_to_gif
-
+    mood = prompt_user_for_mood()
     image_paths = user_prompt_n_imgs(num_images)
+    captions = []
     for img in tqdm(image_paths):
         raw_image = convert_to_gif(img, output_path="outputs")
         result = inferenceLavis.caption_image(raw_image)
-        print(result)
+        captions.append(result)
+    print(captions)
+
+    story = gpt3.generate_story_from_captions(captions, mood)
+    print(story)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--num-images", "-n", type=int,
-                        default=2, help="number of images to process")
+                        default=3, help="number of images to process")
     args = parser.parse_args()
 
     num_images = args.num_images

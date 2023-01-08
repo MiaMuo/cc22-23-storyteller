@@ -1,4 +1,5 @@
 # Image Caption with  Lavis Model
+import random
 import requests
 from PIL import Image
 import torch
@@ -20,4 +21,7 @@ def caption_image(image):
     # due to the non-determinstic nature of necleus sampling, you may get different captions.
     result = model.generate(
         {"image": image}, use_nucleus_sampling=True, num_captions=3)
+
+    # randomly select one caption
+    result = random.choice(result)
     return result
