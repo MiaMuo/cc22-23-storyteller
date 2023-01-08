@@ -5,7 +5,7 @@ openai.api_key = os.getenv('OPENAI_KEY')
 
 MODEL = "text-davinci-003"
 TEMPERATURE = 0.7
-MAX_TOKENS = 256
+MAX_TOKENS = 2000
 TOP_P = 1
 FREQUENCY_PENALTY = 0
 PRESENCE_PENALTY = 0

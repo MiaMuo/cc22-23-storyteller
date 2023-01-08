@@ -3,3 +3,4 @@ Pillow
 torch==1.10.0
 git+https://github.com/salesforce/LAVIS.git@v0.1.0
 openai
+pillow_heif

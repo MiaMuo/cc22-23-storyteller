@@ -4,6 +4,7 @@ Sequence of Images Caption
 Input: Filenames of images to use for the sequence
 Output: The short story
 '''
+from pillow_heif import register_heif_opener
 import gpt3
 import inferenceLavis
 from lavis.models import load_model_and_preprocess
@@ -16,10 +17,10 @@ from tkinter import PhotoImage
 import os
 os.environ["TK_SILENCE_DEPRECATION"] = "1"
 
-
 # Create the main window
 
 # Covert the input images to GIF format
+register_heif_opener()
 
 
 def convert_to_gif(input_path: str, output_path: str):
@@ -44,12 +45,18 @@ def user_prompt_n_imgs(n):
     return inputs
 
 
+def prompt_user_for_number_of_images():
+    num_images = input("How many images would you like to use? ")
+    return int(num_images)
+
+
 def prompt_user_for_mood():
     mood = input("What mood would you like the story to be? ")
     return mood
 
 
-def main(num_images: int):
+def main():
+    num_images = prompt_user_for_number_of_images()
     mood = prompt_user_for_mood()
     image_paths = user_prompt_n_imgs(num_images)
     captions = []
@@ -64,11 +71,4 @@ def main(num_images: int):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--num-images", "-n", type=int,
-                        default=3, help="number of images to process")
-    args = parser.parse_args()
-
-    num_images = args.num_images
-
-    main(num_images=num_images)
+    main()
