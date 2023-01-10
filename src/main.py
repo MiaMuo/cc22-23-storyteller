@@ -51,7 +51,8 @@ def prompt_user_for_number_of_images():
 
 
 def prompt_user_for_mood():
-    mood = input("What mood would you like the story to be? ")
+    mood = input(
+        "What mood would you like the story to be, mystery, horror, fantasy, romance, drama, science fiction? ")
     return mood
 
 
@@ -72,3 +73,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# TODO
+# User specify Hyperparameter
+# Which languages do you want your story be presented, German,Chinese,Russian,Italy..?
+# Longer Story? Hayperparameter== token-length, mit selbe captions
+# different mood? Hayperparameter== mood
