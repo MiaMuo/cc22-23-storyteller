@@ -80,3 +80,5 @@ if __name__ == "__main__":
 # Which languages do you want your story be presented, German,Chinese,Russian,Italy..?
 # Longer Story? Hayperparameter== token-length, mit selbe captions
 # different mood? Hayperparameter== mood
+# Grammar
+# Coherence
