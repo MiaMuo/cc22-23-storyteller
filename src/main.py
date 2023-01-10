@@ -50,6 +50,17 @@ def prompt_user_for_number_of_images():
     return int(num_images)
 
 
+def prompt_user_for_genre():
+    genre = input(
+        "What genre would you like the story to be? Enter:\n [0] for news report \n [1] for sitcom script\n [2] for Shakespeare play? ")
+    # Only allow the user to enter 0, 1, or 2
+    if genre not in ["0", "1", "2"]:
+        print("Invalid genre. Please enter 0, 1, or 2.")
+        return prompt_user_for_genre()
+
+    return int(genre)
+
+
 def prompt_user_for_mood():
     mood = input(
         "What mood would you like the story to be, mystery, horror, fantasy, romance, drama, science fiction? ")
@@ -57,8 +68,11 @@ def prompt_user_for_mood():
 
 
 def main():
+    genre = prompt_user_for_genre()
+    print(genre)
     num_images = prompt_user_for_number_of_images()
-    mood = prompt_user_for_mood()
+   # mood = prompt_user_for_mood()
+
     image_paths = user_prompt_n_imgs(num_images)
     captions = []
     for img in tqdm(image_paths):
@@ -67,7 +81,7 @@ def main():
         captions.append(result)
     print(captions)
 
-    story = gpt3.generate_story_from_captions(captions, mood)
+    story = gpt3.generate_story_from_captions(captions, "", genre)
     print(story)
 
 
