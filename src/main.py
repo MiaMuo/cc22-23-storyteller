@@ -7,16 +7,12 @@ Output: The short story
 from pillow_heif import register_heif_opener
 import gpt3
 import inferenceLavis
-from lavis.models import load_model_and_preprocess
 from tqdm import tqdm
-import argparse
 from PIL import Image
 import tkinter as tk
 from tkinter import filedialog
-from tkinter import PhotoImage
 import os
 os.environ["TK_SILENCE_DEPRECATION"] = "1"
-
 # Create the main window
 
 # Covert the input images to GIF format
@@ -79,17 +75,10 @@ def prompt_user_for_genre():
     return genre["options"][int(genre_option_index)]
 
 
-def prompt_user_for_mood():
-    mood = input(
-        "What mood would you like the story to be, mystery, horror, fantasy, romance, drama, science fiction? ")
-    return mood
-
-
 def main():
     genre = prompt_user_for_genre()
     print(genre)
     num_images = prompt_user_for_number_of_images()
-   # mood = prompt_user_for_mood()
 
     image_paths = user_prompt_n_imgs(num_images)
     captions = []
