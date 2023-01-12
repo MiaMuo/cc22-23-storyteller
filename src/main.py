@@ -51,11 +51,17 @@ def prompt_user_for_number_of_images():
 
 
 def prompt_user_for_genre():
+    # "[0] for news report \n [1] for sitcom script\n [2] for Shakespeare play?..."
+
+    genre_list_with_numbers_str = "\n".join(
+        [f"[{i}] for {genre['name']}" for i, genre in enumerate(gpt3.genres)])
+
     genre = input(
-        "What genre would you like the story to be? Enter:\n [0] for news report \n [1] for sitcom script\n [2] for Shakespeare play? ")
-    # Only allow the user to enter 0, 1, or 2
-    if genre not in ["0", "1", "2"]:
-        print("Invalid genre. Please enter 0, 1, or 2.")
+        "What genre would you like the story to be? Enter:\n" + genre_list_with_numbers_str + "\n")
+
+    if int(genre) >= len(gpt3.genres):
+        print("Invalid genre. Please enter " +
+              list(range(len(gpt3.genres))) + " genres. ")
         return prompt_user_for_genre()
 
     return int(genre)
