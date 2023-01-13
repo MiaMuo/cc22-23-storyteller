@@ -13,9 +13,7 @@ import tkinter as tk
 from tkinter import filedialog
 import os
 os.environ["TK_SILENCE_DEPRECATION"] = "1"
-# Create the main window
 
-# Covert the input images to GIF format
 register_heif_opener()
 
 
@@ -23,12 +21,8 @@ def convert_to_gif(input_path: str, output_path: str):
     filename, _ = os.path.splitext(input_path)
     _, name = os.path.split(filename)
     with Image.open(input_path) as im:
-        # Convert the image to GIF format
         im = im.convert("RGB")
         return im
-       # im.save(output_path+"/"+name+".gif", "gif")
-
-# User prompt n images and store them into the created inputs folder
 
 
 def user_prompt_n_imgs(n):
@@ -54,42 +48,50 @@ def prompt_user_for_genre():
     genre_index = input(
         "What genre would you like the story to be? Enter:\n" + genre_list_with_numbers_str + "\n")
 
-    if int(genre_index) >= len(gpt3.genres):
-        print("Invalid genre. Please enter " +
-              list(range(len(gpt3.genres))) + " genres. ")
+    allowed_genre_indices = [str(i) for i in range(len(gpt3.genres))]
+    if genre_index not in allowed_genre_indices:
+        print("Invalid genre. Please enter one of the following characters: "
+              + ", ".join(allowed_genre_indices) + ".")
+
         return prompt_user_for_genre()
 
-    genre = gpt3.genres[int(genre_index)]
+    return gpt3.genres[int(genre_index)]
 
+
+def prompt_user_for_genre_option(genre):
     genreOption_list_with_numbers_str = "\n".join(
         [f"[{i}] for {genreOption['name']}" for i, genreOption in enumerate(genre["options"])])
 
     genre_option_index = input(
         "What genre option would you like the story to be? Enter:\n" + genreOption_list_with_numbers_str + "\n")
 
-    if int(genre_option_index) >= len(genre["options"]):
-        print("Invalid genre option. Please enter " +
-              list(range(len(genre["options"]))) + " genres. ")
-        return prompt_user_for_genre()
+    allowed_genre_option_indices = [str(i)
+                                    for i in range(len(genre["options"]))]
+    if genre_option_index not in allowed_genre_option_indices:
+        print("Invalid genre option. Please enter one of the following characters: "
+              + ", ".join(allowed_genre_option_indices) + ".")
+        return prompt_user_for_genre_option(genre)
 
     return genre["options"][int(genre_option_index)]
 
 
 def main():
-    genre = prompt_user_for_genre()
-    print(genre)
     num_images = prompt_user_for_number_of_images()
-
     image_paths = user_prompt_n_imgs(num_images)
     captions = []
     for img in tqdm(image_paths):
         raw_image = convert_to_gif(img, output_path="outputs")
         result = inferenceLavis.caption_image(raw_image)
         captions.append(result)
-    print(captions)
 
-    story = gpt3.generate_story_from_captions(captions, "", genre)
-    print(story)
+    while True:
+        genre = prompt_user_for_genre()
+        genre_option = prompt_user_for_genre_option(genre)
+        story = gpt3.generate_story_from_captions(captions, genre_option)
+        print(story)
+        print("Would you like to generate another story? (y/n)")
+        if input() == "n":
+            break
 
 
 if __name__ == "__main__":
