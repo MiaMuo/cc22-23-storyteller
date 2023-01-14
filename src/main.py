@@ -6,7 +6,7 @@ Output: The short story
 '''
 from pillow_heif import register_heif_opener
 import gpt3
-import inferenceLavis
+import blip
 from tqdm import tqdm
 from PIL import Image
 import tkinter as tk
@@ -81,7 +81,7 @@ def main():
     captions = []
     for img in tqdm(image_paths):
         raw_image = convert_to_gif(img, output_path="outputs")
-        result = inferenceLavis.caption_image(raw_image)
+        result = blip.caption_image(raw_image)
         captions.append(result)
 
     while True:

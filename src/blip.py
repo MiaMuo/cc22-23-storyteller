@@ -1,10 +1,6 @@
 # Image Caption with  Lavis Model
 import random
-import requests
-from PIL import Image
 import torch
-from torchvision import transforms
-from torchvision.transforms.functional import InterpolationMode
 from lavis.models import load_model_and_preprocess
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
