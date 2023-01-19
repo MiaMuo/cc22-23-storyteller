@@ -6,13 +6,12 @@
 
 # Execution
 
-Set the environment variable `OPENAI_API_KEY` to the API key, which can be generated from [OpenAI](https://beta.openai.com/account/api-keys);
-Set the python environment to Python3.8.9 with `pip install virtualenv` and `virtualenv -p python3.8 CC22-23-Storyteller`;
-Activate the virtual environment with `source CC22-23-Storyteller/.venv/bin/activate`im Mac OS and Unix systems;
-Activate the virtual environment with `source CC22-23-Storyteller/.venv/Scripts/activate` in Windows systems;
-Install the dependencies in `requirements.txt` file with `pip install -r requirements.txt`;
-Navigate to `./src` folder;
-Run with `python3 main.py`.
+1. Set the environment variable `OPENAI_API_KEY` to the API key, which can be generated from [OpenAI](https://beta.openai.com/account/api-keys);
+2. Set the python environment to Python3.8.9 with `pip install virtualenv` and `virtualenv -p python3.8 CC22-23-Storyteller`;
+3. Activate the virtual environment with `source CC22-23-Storyteller/.venv/bin/activate`im Mac OS and Unix systems or with `source CC22-23-Storyteller/.venv/Scripts/activate` in Windows systems;
+4. Install the dependencies in `requirements.txt` file with `pip install -r requirements.txt`;
+5. Navigate to `./src` folder;
+6. Run with `python3 main.py`.
 
 # Architecture
 
