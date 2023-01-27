@@ -5,6 +5,7 @@ Input: Filenames of images to use for the sequence
 Output: The short story
 
 '''
+from typing import List
 from pillow_heif import register_heif_opener
 import gpt3
 import blip
@@ -27,18 +28,18 @@ def user_prompt_n_imgs(n):
     root = tk.Tk()
     root.withdraw()
     inputs = []
-    for i in range(n):
+    for _ in range(n):
         file_path = filedialog.askopenfilename()
         inputs.append(file_path)
     return inputs
 
 
 def prompt_user_for_number_of_images():
-    num_images = input("How many images would you like to use? \n")
+    num_imgs = input("How many images would you like to use? \n")
     if not num_images.isdigit() or int(num_images) == 0:
         print("\nInvalid number of images. Please enter a number greater than 0.\n")
         return prompt_user_for_number_of_images()
-    return int(num_images)
+    return int(num_imgs)
 
 
 def prompt_user_for_genre():
@@ -98,14 +99,9 @@ def save_input_image(input_path, output_path):
     image.save(os.path.join(output_path, name + ext))
 
 
-def main():
-    print("\n\nWelcome to Storyteller Program! \nIn our program, you will be able to input a sequence of images and \nwe will based on the images generate a story in the format and genre of your choosing. \nLet's get started!\n\n")
-    num_images = prompt_user_for_number_of_images()
-    print(
-        "\n" + f"Please select {num_images} images one by one from the file picker, which just opened.")
-    image_paths = user_prompt_n_imgs(num_images)
+def main(img_paths: List[str]):
     captions = []
-    for img in tqdm(image_paths):
+    for img in tqdm(img_paths):
         raw_image = convert_to_gif(img)
         save_input_image(img, output_path="outputs")
         result = blip.caption_image(raw_image)
@@ -122,4 +118,10 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    print("\n\nWelcome to Storyteller Program! \nIn our program, you will be able to input a sequence of images and \nwe will based on the images generate a story in the format and genre of your choosing. \nLet's get started!\n\n")
+    num_images = prompt_user_for_number_of_images()
+    print(
+        "\n" + f"Please select {num_images} images one by one from the file picker, which just opened.")
+    image_paths = user_prompt_n_imgs(num_images)
+
+    main(image_paths)
