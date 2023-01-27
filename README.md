@@ -5,6 +5,13 @@
 3. Storyteller Model generates a story by using Text Completion.
 
 # Execution
+
+## Colab
+This repository may be run on Google Colab, which provides a free GPU. To do so, follow these steps:
+1. Follow the link in ./storyteller.ipynb to open the notebook in Colab;
+2. Execute the notebook. Note! Read the comments in the notebook carefully, as they contain important information.
+
+## Locally
 This repository requires Python 3.8; it must be installed prior to execution, as well as the `pip3` package manager. Make sure the directory of the installed binaries is in the `PATH` environment variable.
 
 It will also not work on the ARM version of MacOS (e.g. M1), due to dependencies not being available for this architecture.
