@@ -36,7 +36,7 @@ def user_prompt_n_imgs(n):
 
 def prompt_user_for_number_of_images():
     num_imgs = input("How many images would you like to use? \n")
-    if not num_images.isdigit() or int(num_images) == 0:
+    if not num_imgs.isdigit() or int(num_imgs) == 0:
         print("\nInvalid number of images. Please enter a number greater than 0.\n")
         return prompt_user_for_number_of_images()
     return int(num_imgs)
